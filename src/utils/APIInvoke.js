@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../Rutas/config'
 
 class APIInvoke {
     async invokeGET(resource, queryParams) {
@@ -50,27 +50,35 @@ class APIInvoke {
     }
 
     async invokePOST(resource, body) {
-
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem('token');
         let bearer;
-        if (token === "") {
-            bearer = "";
+      
+        if (token) {
+          bearer = `Bearer ${token}`;
         } else {
-            bearer = `${token}`;
+          bearer = '';
         }
-
+      
         const data = {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: {
-                'Content-Type': 'application/json',
-                'x-auth-token': bearer
-            }
+          method: 'POST',
+          body: JSON.stringify(body),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: bearer,
+          },
+        };
+      
+        const url = `${config.api.baseURL}${resource}`;
+      
+        try {
+          const response = await fetch(url, data);
+          const json = await response.json();
+          return json;
+        } catch (error) {
+          console.error('Failed to fetch:', error);
+          throw new Error('Failed to fetch');
         }
-        const url = `${config.api.baseURL}${resource}`
-        let response = (await (await fetch(url, data)).json())
-        return response
-    }
+      }
 
     async invokeDELETE(resource) {
 
