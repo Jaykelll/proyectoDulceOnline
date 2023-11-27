@@ -12,7 +12,7 @@ const CrearCuenta = () => {
     rol:"Comprador"
   });
 
-  const { nombre, email, password, confirmar } = usuario;
+  const { nombre, email, password, confirmar, rol } = usuario;
 
   const onChange = (e) => {
     setUsuario({
@@ -26,6 +26,23 @@ const CrearCuenta = () => {
   }, []);
 
   const crearCuenta = async () => {
+    const verificarExistenciaUsuario = async (nombre) => {
+      try {
+          const response = await APIInvoke.invokeGET(
+              `/Usuarios?nombre=${nombre}`
+          );
+          if (response && response.length > 0) {
+              return true; // El usuario ya existe
+          }else{
+              return false; // El usuario no existe
+          }
+
+      } catch (error) {
+          console.error(error);
+          return false; // Maneja el error si la solicitud falla 
+      }
+  };
+
     if (password !== confirmar) {
       const msg = "Las constraseñas son diferentes.";
       swal({
@@ -59,15 +76,17 @@ const CrearCuenta = () => {
         },
       });
     } else {
+      const usuarioExistente = await verificarExistenciaUsuario(nombre);
       const data = {
         nombre: usuario.nombre,
         email: usuario.email,
         password: usuario.password,
+        rol: usuario.rol
       };
       const response = await APIInvoke.invokePOST(`/Usuarios`, data);
       const mensaje = response.msg;
 
-      if (mensaje === "El usuario ya existe") {
+      if (usuarioExistente) {
         const msg = "El usuario ya existe.";
         swal({
           title: "Error",

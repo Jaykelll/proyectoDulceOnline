@@ -74,15 +74,20 @@
       "email": "martin@soy.com",
       "password": "123456",
       "id": 17
+    },
+    {
+      "email": "jestebansanabriao@gmail.com",
+      "password": "123456",
+      "id": 18
     }
   ],
   "Productos": [
     {
-      "id": "4",
-      "nombre": "oreo",
-      "precio": "3000",
-      "categoria": "galleta",
-      "region": "caribe"
+      "id": "3",
+      "nombre": "Huellitas",
+      "precio": "9999",
+      "categoria": "fghghffj",
+      "region": "thggh"
     }
   ]
 }
