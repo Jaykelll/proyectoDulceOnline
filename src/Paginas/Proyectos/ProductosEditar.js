@@ -39,6 +39,7 @@ const ProductosEditar = () => {
 
     // Llamar directamente a la API sin try-catch, esto asume que las llamadas a la API siempre son exitosas.
     const response = await APIInvoke.invokePUT(`/productos/${idProducto}`, producto);
+    
 
     if (response && response.id) {
       setProducto(response);

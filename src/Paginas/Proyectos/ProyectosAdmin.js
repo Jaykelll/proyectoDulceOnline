@@ -70,7 +70,7 @@ const ProyectosAdmin = () => {
     <div className="wrapper">
       <Navbar></Navbar>
       <SidebarContainer></SidebarContainer>
-      <div className="content-wrapper">
+      <div className="body content-wrapper">
         <ContentHeader
           Titulo={"Listado de Productos Tipicos"}
           breadcrumb1={"inicio"}
@@ -81,7 +81,7 @@ const ProyectosAdmin = () => {
           <div className="card">
             <div className="card-header">
               <h3 className="card-title">
-                <Link to={"/produtos/crear"} className="btn btn-block btn-primary btn-sm">Crear Producto </Link>
+                <Link to={"/produtos/crear"} className="btn btn-block btn-primary bg-red">Crear Producto </Link>
               </h3>
             </div>
             <div className="card-body">
@@ -106,8 +106,8 @@ const ProyectosAdmin = () => {
                       <td>{producto.region}</td>
                       <td>
                       <Link to={`/produtos/editar/${producto.id}@${producto.nombre},${producto.precio},${producto.categoria},${producto.region}`} 
-                        className="btn btn-sm btn-primary">Editar</Link>&nbsp;&nbsp;
-                        <button onClick={(e)=> Eliminarproducto(e,producto.id )} className="btn btn-sm btn-danger">Eliminar</button>&nbsp;&nbsp;
+                        className="btn btn-sm bg-yellow">Editar</Link>&nbsp;&nbsp;
+                        <button onClick={(e)=> Eliminarproducto(e,producto.id )} className="btn btn-sm bg-orange">Eliminar</button>&nbsp;&nbsp;
                       </td>
                       
                     </tr>

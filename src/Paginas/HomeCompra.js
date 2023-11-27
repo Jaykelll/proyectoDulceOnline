@@ -8,7 +8,7 @@ import Footer from "../Componentes/Footer";
 
 const Home = () => {
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <Navbar></Navbar>
       <SidebarContainer></SidebarContainer>
       <div className="body content-wrapper">
@@ -24,14 +24,14 @@ const Home = () => {
               <div className="col-lg-3 col-6">
                 <div className="small-box bg-purple">
                   <div className="inner">
-                    <h3>Dulces</h3>
+                    <h3>Mis Compras</h3>
                     <p>&nbsp;&nbsp;</p>
                   </div>
                   <div className="icon">
-                    <i className="fas fa-candy-cane" />
+                    <i className="fas fa-shopping-cart" />
                   </div>
-                  <Link to={"/proyectos-admin"} className="small-box-footer">
-                    Ver Dulces <i className="fas fa-arrow-circle-right" />
+                  <Link to={"/proyectos-compra"} className="small-box-footer">
+                    Ver Mis Compras <i className="fas fa-arrow-circle-right" />
                   </Link>
                 </div>
               </div>

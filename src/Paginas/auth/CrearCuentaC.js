@@ -9,7 +9,7 @@ const CrearCuenta = () => {
     email: "",
     password: "",
     confirmar: "",
-    rol:"Vendedor"
+    rol:"Comprador"
   });
 
   const { nombre, email, password, confirmar } = usuario;
